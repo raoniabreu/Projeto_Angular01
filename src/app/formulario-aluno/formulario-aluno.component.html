@@ -1,0 +1,31 @@
+<div class="form-container">
+    <h2>{{ alunoSelecionado ? 'Editar Estudante' : 'Cadastrar Estudante' }}</h2>
+  
+    <form (ngSubmit)="salvar()" #form="ngForm">
+      <div>
+        <label>Nome:</label>
+        <input
+          type="text"
+          [(ngModel)]="aluno.nome"
+          name="nome"
+          required
+        />
+      </div>
+  
+      <div>
+        <label>Idade:</label>
+        <input
+          type="number"
+          [(ngModel)]="aluno.idade"
+          name="idade"
+          required
+          min="1"
+        />
+      </div>
+  
+      <div>
+        <label>Curso:</label>
+        <input
+          type="text"
+          [(
+  

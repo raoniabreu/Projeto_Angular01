@@ -1,0 +1,21 @@
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .botoes button {
+    margin-right: 10px;
+    padding: 8px 16px;
+  }
+  

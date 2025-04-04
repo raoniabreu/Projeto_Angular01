@@ -8,32 +8,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./lista-alunos.component.css']
 })
 export class ListaAlunosComponent implements OnInit {
-  alunos = this.alunoService.getAlunos();
-  termoBusca = '';
+  alunos: any[] = [];
+  termoBusca: string = '';
 
-  constructor(private alunoService: AlunoService, private router: Router) {}
+  constructor(
+    private alunoService: AlunoService,
+    private router: Router
+  ) {}
 
-  filtrarAlunos() {
+  ngOnInit(): void {
+    this.alunos = this.alunoService.getAlunos();
+  }
+
+  filtrarAlunos(): any[] {
     return this.alunos.filter(aluno =>
       aluno.nome.toLowerCase().includes(this.termoBusca.toLowerCase())
     );
   }
 
-  ordenarPorNome() {
+  ordenarPorNome(): void {
     this.alunos.sort((a, b) => a.nome.localeCompare(b.nome));
   }
 
-  ordenarPorIdade() {
+  ordenarPorIdade(): void {
     this.alunos.sort((a, b) => a.idade - b.idade);
   }
 
-  excluirAluno(index: number) {
+  excluirAluno(index: number): void {
     if (confirm('Deseja realmente excluir este aluno?')) {
       this.alunoService.excluirAluno(index);
+      this.alunos = this.alunoService.getAlunos();
     }
   }
 
-  irParaCadastro() {
+  irParaCadastro(): void {
     this.router.navigate(['/formulario']);
   }
 }

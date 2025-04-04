@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Lista de Estudantes</h2>
+
+  <div class="acoes">
+    <input
+      type="text"
+      [(ngModel)]="termoBusca"
+      placeholder="Buscar por nome"
+    />
+    <button (click)="ordenarPorNome()">Ordenar por Nome</button>
+    <button (click)="ordenarPorIdade()">Ordenar por Idade</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Curso</th>
+        <th>Período</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aluno of filtrarAlunos(); let i = index">
+        <td>{{ aluno.nome }}</td>
+        <td>{{ aluno.idade }}</td>
+        <td>{{ aluno.curso }}</td>
+        <td>{{ aluno.periodo }}</td>
+        <td>
+          <button (click)="excluirAluno(i)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="irParaCadastro()">Cadastrar Novo Estudante</button>
+</div>
