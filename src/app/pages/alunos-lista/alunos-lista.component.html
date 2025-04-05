@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Minha Lista de Alunos</h1>
+    <p>TESTE: tela carregou!</p>
+
+    <button (click)="novo()">➕ Novo Aluno</button>
+  
+    <table border="1" cellpadding="10" cellspacing="0" style="margin-top: 20px; width: 100%;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aluno of alunos">
+          <td>{{ aluno.id }}</td>
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.idade }}</td>
+          <td>
+            <button (click)="editar(aluno.id)">✏️ Editar</button>
+            <button (click)="excluir(aluno.id)">🗑️ Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

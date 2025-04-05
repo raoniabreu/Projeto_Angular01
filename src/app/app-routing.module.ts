@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
-import { FormularioAlunoComponent } from './formulario-aluno/formulario-aluno.component';
+import { AlunosListaComponent } from './pages/alunos-lista/alunos-lista.component';
+import { AlunosFormComponent } from './pages/alunos-form/alunos-form.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'lista', pathMatch: 'full' },
-  { path: 'lista', component: ListaAlunosComponent },
-  { path: 'formulario', component: FormularioAlunoComponent }
+  { path: '', redirectTo: 'alunos', pathMatch: 'full' },
+  { path: 'alunos', component: AlunosListaComponent },
+  { path: 'alunos/novo', component: AlunosFormComponent },
+  { path: 'alunos/editar/:id', component: AlunosFormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .btn {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #1565c0;
+  }
+  
+  .btn.secondary {
+    background-color: #757575;
+  }
+  
+  .btn.secondary:hover {
+    background-color: #616161;
+  }
+  
+  .btn.small {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+  

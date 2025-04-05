@@ -1,0 +1,15 @@
+<h2>{{ editando ? 'Editar Aluno' : 'Novo Aluno' }}</h2>
+<form (ngSubmit)="salvar()">
+  <label>
+    Nome:
+    <input type="text" [(ngModel)]="aluno.nome" name="nome" required />
+  </label>
+  <br />
+  <label>
+    Idade:
+    <input type="number" [(ngModel)]="aluno.idade" name="idade" required />
+  </label>
+  <br />
+  <button type="submit">Salvar</button>
+  <button type="button" (click)="cancelar()">Cancelar</button>
+</form>

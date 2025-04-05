@@ -1,37 +1,43 @@
+// src/app/services/aluno.service.ts
 import { Injectable } from '@angular/core';
 
+export interface Aluno {
+  id: number;
+  nome: string;
+  idade: number;
+}
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlunoService {
-  private alunos: any[] = [];
-  private alunoSelecionado: any = null;
+  private alunos: Aluno[] = [
+    { id: 1, nome: 'João Silva', idade: 20 },
+    { id: 2, nome: 'Maria Souza', idade: 22 },
+  ];
+  private proximoId = 3;
 
-  getAlunos() {
-    return this.alunos;
+  getAlunos(): Aluno[] {
+    return [...this.alunos];
   }
 
-  adicionarAluno(aluno: any) {
+  getAlunoPorId(id: number): Aluno | undefined {
+    return this.alunos.find(aluno => aluno.id === id);
+  }
+
+  adicionarAluno(aluno: Aluno) {
+    aluno.id = this.proximoId++;
     this.alunos.push(aluno);
   }
 
-  excluirAluno(index: number) {
-    this.alunos.splice(index, 1);
-  }
-
-  selecionarAluno(aluno: any) {
-    this.alunoSelecionado = aluno;
-  }
-
-  getAlunoSelecionado() {
-    return this.alunoSelecionado;
-  }
-
-  atualizarAluno(alunoAntigo: any, alunoAtualizado: any) {
-    const index = this.alunos.indexOf(alunoAntigo);
+  atualizarAluno(aluno: Aluno) {
+    const index = this.alunos.findIndex(a => a.id === aluno.id);
     if (index !== -1) {
-      this.alunos[index] = alunoAtualizado;
+      this.alunos[index] = aluno;
     }
-    this.alunoSelecionado = null;
+  }
+
+  excluirAluno(id: number) {
+    this.alunos = this.alunos.filter(a => a.id !== id);
   }
 }
