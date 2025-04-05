@@ -20,6 +20,10 @@ export class AlunoService {
   getAlunos(): Aluno[] {
     return [...this.alunos];
   }
+  getAluno(id: number): Aluno | undefined {
+    return this.alunos.find(aluno => aluno.id === id);
+  }
+  
 
   getAlunoPorId(id: number): Aluno | undefined {
     return this.alunos.find(aluno => aluno.id === id);

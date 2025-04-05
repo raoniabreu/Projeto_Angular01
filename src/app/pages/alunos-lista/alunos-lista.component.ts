@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { AlunoService, Aluno } from '../../services/aluno.service';
-
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common'; // <- necessário para *ngFor
+import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+
+import { AlunoService, Aluno } from '../../services/aluno.service';
 
 @Component({
   selector: 'app-alunos-lista',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
   templateUrl: './alunos-lista.component.html',
 })
-export class AlunosListaComponent implements OnInit {
+export class AlunosListaComponent {
   alunos: Aluno[] = [];
 
   constructor(private alunoService: AlunoService, private router: Router) {}
 
   ngOnInit() {
-    console.log("AlunosListaComponent carregado!");
     this.alunos = this.alunoService.getAlunos();
   }
 
